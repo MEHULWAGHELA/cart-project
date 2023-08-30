@@ -3,7 +3,7 @@ import { Hoc } from '../hoc/Hoc'
 import '../../styles/pages/orders.scss'
 import { useDispatch, useSelector } from 'react-redux'
 import { deleteOrder, getOrder } from '../../redux/action/orderAction'
-import { Card, CardBody, CardSubtitle, CardText, CardTitle, Col, Container, Row } from 'reactstrap'
+import { Button, Card, CardBody, CardSubtitle, CardText, CardTitle, Col, Container, Row } from 'reactstrap'
 import { PiDotsThreeOutlineVerticalBold } from 'react-icons/pi'
 const Orders = () => {
   let state = useSelector((state) => state)
