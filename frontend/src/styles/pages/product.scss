@@ -1,0 +1,45 @@
+.product_card {
+  &_three_dot {
+    text-align: end;
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 2;
+  }
+  
+  &_three_dot svg{
+    border-radius: 10px;
+    height: 40px;
+    width: 30px;
+    cursor: pointer;
+    font-size: 20px;
+    color: black;
+    background-color: #e38205;
+  }
+
+  &_three_dot_hover {
+    opacity: 0;
+    transition: 1s;
+  }
+
+  &_three_dot_hover button {
+    width: 100px;
+    padding: 5px;
+    margin: 5px 0;
+    background-color: burlywood;
+    font-size: 22px;
+    border-radius: 10px;
+    font-weight: 600;
+    display: block;
+  }
+
+  .product_card_three_dot:hover .product_card_three_dot_hover {
+    opacity: 1;
+    position: relative;
+  }
+
+  &_three_dot_hover button:hover  {
+    background-color: rgb(236, 151, 40);
+    box-shadow: 5px 5px 5px grey;
+  }
+}

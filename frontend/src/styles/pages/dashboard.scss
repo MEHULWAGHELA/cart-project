@@ -1,0 +1,9 @@
+.dashboard {
+  &_chartOne {
+    padding: 10px;
+  }
+  &_chartOne canvas {
+    height: 200px !important;
+    width: 400px !important;
+  }
+}
