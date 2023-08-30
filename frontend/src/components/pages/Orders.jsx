@@ -15,12 +15,11 @@ const Orders = () => {
     dispatch(getOrder())
   }, [])
 
-  
-  const editOrderData = (id) => {
-
-  }
   const deleteOrderData = (id) => {
     dispatch(deleteOrder(id))
+  }
+  const setOrderCompleted = (id) => {
+    
   }
 
   return (
@@ -40,7 +39,6 @@ const Orders = () => {
                     <div className='product_card_three_dot'>
                       <PiDotsThreeOutlineVerticalBold />
                       <dir className='product_card_three_dot_hover'>
-                        <button onClick={() => editOrderData(x._id)}>Edit</button>
                         <button onClick={() => deleteOrderData(x._id)}>Delete</button>
                       </dir>
                     </div>
@@ -64,6 +62,7 @@ const Orders = () => {
                         {x.discount}
                       </CardText>
                     </CardBody>
+                    <Button onClick={()=>{setOrderCompleted(x._id)}}>Order Completed</Button>
                   </Card>
                 </Col>
               )
