@@ -20,9 +20,6 @@ const Cart = () => {
     console.log(state)
   }, [state])
 
-  const editCartData = (id) => {
-
-  }
   const buyNow = (id, index) => {
     let obj = {
       productId: id,
@@ -70,7 +67,6 @@ const Cart = () => {
                   <div className='product_card_three_dot'>
                     <PiDotsThreeOutlineVerticalBold />
                     <dir className='product_card_three_dot_hover'>
-                      <button onClick={() => editCartData(x._id)}>Edit</button>
                       <button onClick={() => deleteCartData(x._id)}>Delete</button>
                     </dir>
                   </div>

@@ -1,10 +1,11 @@
-import { Fragment } from "react"
+import { Fragment, useContext } from "react"
 import SidebarC from "../common/SidebarC"
-import { Col, Container, Row } from "reactstrap"
+import { Button, Col, Container, Row } from "reactstrap"
 import HeaderC from "../common/HeaderC"
 import '../../styles/hoc/hoc.scss'
+import { useNavigate } from "react-router-dom"
 export const Hoc = (Component) => {
-    const NewComponent = () => {
+    const NewComponent = () => {        
         return (
             <Fragment>
                 <Row className="g-0">
