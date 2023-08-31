@@ -1,5 +1,5 @@
 import axios from "axios"
-import { SIGNIN } from "../type/type"
+import { DUMMY2, SIGNIN } from "../type/type"
 
 let defaultState = {
     userData: [1]
@@ -10,6 +10,9 @@ export const signinReducer = (state = defaultState, action) => {
             return {
                 token: action.token
             }
+        }
+        case DUMMY2: {
+            return defaultState
         }
         default: return state
     }

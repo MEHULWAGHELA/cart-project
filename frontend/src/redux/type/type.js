@@ -9,9 +9,11 @@ export const GETPROFILE = 'GETPROFILE'
 /* Sign Up */
 export const USERGET = 'USERGET'
 export const USERSET = 'USERSET'
+export const DUMMY = 'DUMMY'
 
-/* Sign Up */
+/* Sign in */
 export const SIGNIN = 'SIGNIN'
+export const DUMMY2 = 'DUMMY2'
 
 /* cart */
 export const GETCART = 'GETCART'

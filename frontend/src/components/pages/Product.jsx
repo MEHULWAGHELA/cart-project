@@ -27,7 +27,12 @@ import { authorise } from '../authorize/authorise';
 import { GETPRODUCT } from '../../redux/type/type';
 import { setCart } from '../../redux/action/cartAction';
 import { setOrder } from '../../redux/action/orderAction';
-
+import { BiSolidCategory } from 'react-icons/bi'
+import { BsShop } from 'react-icons/bs'
+import { FaRupeeSign } from 'react-icons/fa'
+import { FaMobileScreen } from 'react-icons/fa'
+import { FcAbout } from 'react-icons/fc'
+import { TbDiscountCheckFilled } from 'react-icons/tb'
 const Product = (props) => {
   let state = useSelector((state) => state)
   let dispatch = useDispatch()
@@ -42,7 +47,7 @@ const Product = (props) => {
   }, [])
 
   const editProductData = (id) => {
-
+    toggle()
   }
   const deleteProductData = (id) => {
     dispatch(deleteProduct(id))
@@ -109,22 +114,38 @@ const Product = (props) => {
                     </div>
                     <CardBody>
                       <CardTitle tag="h5">
-                        {x.productName}
+                        Product:-{x.productName}
                       </CardTitle>
                       <CardSubtitle
                         className="mb-2 text-muted"
                         tag="h6"
                       >
-                        {x.category}
+                        <div>
+                          <span className='product_icon'><BiSolidCategory /></span>
+                          {x.category}
+                        </div>
                       </CardSubtitle>
                       <CardText>
-                        {x.price}
-                        <br />
-                        {x.discription}
-                        <br />
-                        {x.shopname}
-                        {x.mobile}
-                        {x.discount}
+                        <div>
+                          <span className='product_icon'><FaRupeeSign /></span>
+                          Price:-{x.price}
+                        </div>
+                        <div>
+                          <span className='product_icon'><FcAbout /></span>
+                          Discription:-{x.discription}
+                        </div>
+                        <div>
+                          <span className='product_icon'><BsShop /></span>
+                          Shop:-{x.shopname}
+                        </div>
+                        <div>
+                          {/* <span className='product_icon'><FaMobileScreen /></span> */}
+                          Mobile:-{x.mobile}
+                        </div>
+                        <div>
+                          <span className='product_icon'><TbDiscountCheckFilled /></span>
+                          Discount:-{x.discount}
+                        </div>
                       </CardText>
                       <div className='d-flex justify-content-between'>
                         <Button onClick={() => buyNow(x._id)}>
@@ -141,7 +162,7 @@ const Product = (props) => {
             })
           }
         </Row>
-      </Container>
+      </Container >
 
       {/* CARD */}
 

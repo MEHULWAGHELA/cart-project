@@ -7,6 +7,8 @@ import { getUserData, setUserData } from '../../redux/action/signUpAction';
 import { FaUser } from 'react-icons/fa'
 import { NavLink, useNavigate } from 'react-router-dom';
 import { type } from '@testing-library/user-event/dist/type';
+import Swal from 'sweetalert2';
+import { DUMMY } from '../../redux/type/type';
 const SignUp = () => {
   let state = useSelector((state) => state)
   let dispatch = useDispatch()
@@ -32,13 +34,23 @@ const SignUp = () => {
     dispatch(setUserData(formdata))
   }
   useEffect(() => {
-    dispatch(getUserData())
+    if (state.user.userData[0] == 'User created successfully') {
+      Swal.fire({
+        position: 'center-center',
+        icon: 'success',
+        title: 'User Created Successfully',
+        showConfirmButton: false,
+        timer: 1500
+      })
+      navigate('/')
+    }
+    dispatch({ type: DUMMY })
   }, [state])
 
   return (
     <Fragment>
       <div className='bg-sign-up'>
-      <img src={require('../../assets/images/bg-4.jpg')} alt="" />
+        <img src={require('../../assets/images/bg-4.jpg')} alt="" />
       </div>
       <Container fluid className='py-5 userForm'>
         <Container>
@@ -88,7 +100,7 @@ const SignUp = () => {
                         id="mobile"
                         name="mobile"
                         placeholder="mobile"
-                        type="tel"
+                        type="number"
                         className='form-control'
                         {...register("mobile", { required: true })}
                       />
@@ -137,7 +149,7 @@ const SignUp = () => {
                         id="officeContact"
                         name="officeContact"
                         placeholder="officeContact"
-                        type="tel"
+                        type="number"
                         className='form-control'
                         {...register("officeContact", { required: true })}
                       />

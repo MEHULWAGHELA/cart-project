@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { FaUser } from 'react-icons/fa'
 import { NavLink } from 'react-router-dom';
 import { signin } from '../../redux/action/signInAction';
+import { DUMMY2 } from '../../redux/type/type';
 
 const SignIn = () => {
 
@@ -13,10 +14,9 @@ const SignIn = () => {
   let dispatch = useDispatch()
   const { register, handleSubmit, formState: { errors } } = useForm();
 
-
-
   const onSubmit = (data) => {
     dispatch(signin(data))
+    dispatch({ type: DUMMY2 })
   }
 
   return (
