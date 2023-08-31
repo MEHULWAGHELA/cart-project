@@ -5,6 +5,15 @@ import { useDispatch, useSelector } from 'react-redux'
 import { deleteOrder, getOrder } from '../../redux/action/orderAction'
 import { Button, Card, CardBody, CardSubtitle, CardText, CardTitle, Col, Container, Row } from 'reactstrap'
 import { PiDotsThreeOutlineVerticalBold } from 'react-icons/pi'
+import { AiFillPlusSquare, AiFillMinusSquare } from 'react-icons/ai'
+import { setOrder } from '../../redux/action/orderAction'
+import { BiSolidCategory } from 'react-icons/bi'
+import { BsShop } from 'react-icons/bs'
+import { FaRupeeSign } from 'react-icons/fa'
+import { ImMobile } from 'react-icons/im'
+import { FcAbout } from 'react-icons/fc'
+import { TbDiscountCheckFilled } from 'react-icons/tb'
+import { MdProductionQuantityLimits } from 'react-icons/md'
 const Orders = () => {
   let state = useSelector((state) => state)
   let dispatch = useDispatch()
@@ -19,7 +28,7 @@ const Orders = () => {
     dispatch(deleteOrder(id))
   }
   const setOrderCompleted = (id) => {
-    
+
   }
 
   return (
@@ -44,25 +53,45 @@ const Orders = () => {
                     </div>
                     <CardBody>
                       <CardTitle tag="h5">
-                        {x.productName}
+                        Product:-{x.productName}
                       </CardTitle>
                       <CardSubtitle
                         className="mb-2 text-muted"
                         tag="h6"
                       >
-                        {x.category}
+                        <div>
+                          <span className='product_icon'><BiSolidCategory /></span>
+                          Category:-{x.category}
+                        </div>
                       </CardSubtitle>
                       <CardText>
-                        {x.price}
-                        <br />
-                        {x.discription}
-                        <br />
-                        {x.shopname}
-                        {x.mobile}
-                        {x.discount}
+                        <div>
+                          <span className='product_icon'><FaRupeeSign /></span>
+                          Price:-{x.price}
+                        </div>
+                        <div>
+                          <span className='product_icon'><FcAbout /></span>
+                          Discription:-{x.discription}
+                        </div>
+                        <div>
+                          <span className='product_icon'><BsShop /></span>
+                          Shop:-{x.shopName}
+                        </div>
+                        <div>
+                          <span className='product_icon'><ImMobile /></span>
+                          Mobile:-{x.mobile}
+                        </div>
+                        <div>
+                          <span className='product_icon'><TbDiscountCheckFilled /></span>
+                          Discount:-{x.discount}
+                        </div>
+                        <div>
+                          <span className='product_icon'><MdProductionQuantityLimits /></span>
+                          Quantity:-{x.quantity}
+                        </div>
                       </CardText>
                     </CardBody>
-                    <Button onClick={()=>{setOrderCompleted(x._id)}}>Order Completed</Button>
+                    <Button onClick={() => { setOrderCompleted(x._id) }}>Order Completed</Button>
                   </Card>
                 </Col>
               )

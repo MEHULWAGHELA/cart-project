@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useMemo } from 'react'
 import { Hoc } from '../hoc/Hoc'
 import '../../styles/pages/cart.scss'
 import { deleteCart, getCart } from '../../redux/action/cartAction'
@@ -8,6 +8,12 @@ import { PiDotsThreeOutlineVerticalBold } from 'react-icons/pi'
 import { Button, Card, CardBody, CardSubtitle, CardText, CardTitle, Col, Container, FormGroup, Row } from 'reactstrap'
 import { AiFillPlusSquare, AiFillMinusSquare } from 'react-icons/ai'
 import { setOrder } from '../../redux/action/orderAction'
+import { BiSolidCategory } from 'react-icons/bi'
+import { BsShop } from 'react-icons/bs'
+import { FaRupeeSign } from 'react-icons/fa'
+import { ImMobile } from 'react-icons/im'
+import { FcAbout } from 'react-icons/fc'
+import { TbDiscountCheckFilled } from 'react-icons/tb'
 const Cart = () => {
   let state = useSelector((state) => state)
   let dispatch = useDispatch()
@@ -26,10 +32,11 @@ const Cart = () => {
       quantity: document.querySelectorAll('.q_value')[index].value ? document.querySelectorAll('.q_value')[index].value : 1
     }
     dispatch(setOrder(obj))
-  }
-  const deleteCartData = (id) => {
     dispatch(deleteCart(id))
   }
+  // const deleteCartData = (id) => {
+  //   dispatch(deleteCart(id))
+  // }
 
   const quantityIncrement = (index) => {
     if (document.querySelectorAll('.q_value')[index].value) {
@@ -52,6 +59,9 @@ const Cart = () => {
       document.querySelectorAll('.q_value')[index].value = 1;
     }
   }
+  const total = useMemo(() => {
+    return <div>Total Price:-</div>
+  }, [])
   return (
     <Container fluid>
       <Row className='g-4 product_card'>
@@ -64,30 +74,40 @@ const Cart = () => {
                     alt="Sample"
                     src={x.productImage}
                   />
-                  <div className='product_card_three_dot'>
-                    <PiDotsThreeOutlineVerticalBold />
-                    <dir className='product_card_three_dot_hover'>
-                      <button onClick={() => deleteCartData(x._id)}>Delete</button>
-                    </dir>
-                  </div>
                   <CardBody>
                     <CardTitle tag="h5">
-                      {x.productName}
+                      Product:-{x.productName}
                     </CardTitle>
                     <CardSubtitle
                       className="mb-2 text-muted"
                       tag="h6"
                     >
-                      {x.category}
+                      <div>
+                        <span className='product_icon'><BiSolidCategory /></span>
+                        Category:-{x.category}
+                      </div>
                     </CardSubtitle>
                     <CardText>
-                      {x.price}
-                      <br />
-                      {x.discription}
-                      <br />
-                      {x.shopname}
-                      {x.mobile}
-                      {x.discount}
+                      <div>
+                        <span className='product_icon'><FaRupeeSign /></span>
+                        Price:-{x.price}
+                      </div>
+                      <div>
+                        <span className='product_icon'><FcAbout /></span>
+                        Discription:-{x.discription}
+                      </div>
+                      <div>
+                        <span className='product_icon'><BsShop /></span>
+                        Shop:-{x.shopName}
+                      </div>
+                      <div>
+                        <span className='product_icon'><ImMobile /></span>
+                        Mobile:-{x.mobile}
+                      </div>
+                      <div>
+                        <span className='product_icon'><TbDiscountCheckFilled /></span>
+                        Discount:-{x.discount}
+                      </div>
                     </CardText>
                     <div className='d-flex flex-column flex-wrap'>
                       <FormGroup>
@@ -99,6 +119,7 @@ const Cart = () => {
                         <AiFillMinusSquare className='cart_quatity_icons' onClick={
                           () => quantityDecrement(i)
                         } />
+                        {total}
                       </FormGroup>
                       <Button onClick={() => { buyNow(x._id, i) }}>
                         Buy Now

@@ -30,7 +30,7 @@ import { setOrder } from '../../redux/action/orderAction';
 import { BiSolidCategory } from 'react-icons/bi'
 import { BsShop } from 'react-icons/bs'
 import { FaRupeeSign } from 'react-icons/fa'
-import { FaMobileScreen } from 'react-icons/fa'
+import { ImMobile } from 'react-icons/im'
 import { FcAbout } from 'react-icons/fc'
 import { TbDiscountCheckFilled } from 'react-icons/tb'
 const Product = (props) => {
@@ -99,7 +99,6 @@ const Product = (props) => {
             state.product.productData.map((x, i) => {
               return (
                 <Col xs={12} md={6} lg={4} key={i}>
-                  {console.log(x)}
                   <Card className='position-relative' style={{ backgroundColor: x.color }}>
                     <img
                       alt="Sample"
@@ -122,7 +121,7 @@ const Product = (props) => {
                       >
                         <div>
                           <span className='product_icon'><BiSolidCategory /></span>
-                          {x.category}
+                          Category:-{x.category}
                         </div>
                       </CardSubtitle>
                       <CardText>
@@ -136,10 +135,10 @@ const Product = (props) => {
                         </div>
                         <div>
                           <span className='product_icon'><BsShop /></span>
-                          Shop:-{x.shopname}
+                          Shop:-{x.shopName}
                         </div>
                         <div>
-                          {/* <span className='product_icon'><FaMobileScreen /></span> */}
+                          <span className='product_icon'><ImMobile /></span>
                           Mobile:-{x.mobile}
                         </div>
                         <div>

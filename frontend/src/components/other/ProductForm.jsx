@@ -75,7 +75,7 @@ const ProductForm = (props) => {
                                 id="mobile"
                                 name="mobile"
                                 placeholder="mobile"
-                                type="tel"
+                                type="number"
                                 className='form-control'
                                 {...register("mobile", { required: true })}
                             />

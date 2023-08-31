@@ -6,11 +6,11 @@
     right: 0;
     z-index: 2;
   }
-  
-  &_three_dot svg{
+
+  &_three_dot svg {
     border-radius: 10px;
-    height: 40px;
-    width: 30px;
+    height: 30px;
+    width: 20px;
     cursor: pointer;
     font-size: 20px;
     color: black;
@@ -23,11 +23,10 @@
   }
 
   &_three_dot_hover button {
-    width: 100px;
-    padding: 5px;
-    margin: 5px 0;
+    width: 70px;
+    padding: 2px;
     background-color: burlywood;
-    font-size: 22px;
+    font-size: 18px;
     border-radius: 10px;
     font-weight: 600;
     display: block;
@@ -38,8 +37,13 @@
     position: relative;
   }
 
-  &_three_dot_hover button:hover  {
+  &_three_dot_hover button:hover {
     background-color: rgb(236, 151, 40);
     box-shadow: 5px 5px 5px grey;
   }
+}
+.product_icon {
+  font-size: 20px;
+  margin-right: 5px;
+  padding: 5px;
 }

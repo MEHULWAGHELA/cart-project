@@ -3,7 +3,7 @@ import { Hoc } from '../hoc/Hoc'
 import '../../styles/pages/completedorder.scss'
 const CompletedOrder = () => {
   return (
-    <div>CompletedOrder</div>
+    <div></div>
   )
 }
 
