@@ -17,7 +17,26 @@ import '../../styles/other/productform.scss'
 const ProductForm = (props) => {
     let state = useSelector((state) => state)
     let dispatch = useDispatch()
-    const { register, handleSubmit, formState: { errors } } = useForm();
+    const { register, handleSubmit, formState: { errors }, setValue, getValues } = useForm({
+        defaultValues: {
+            productName: '',
+            price: null,
+            mobile: null,
+            category: '',
+            shopName: '',
+            discount: null,
+            discription: '',
+            colors: '',
+            productImage: {},
+        }
+    });
+    useEffect(() => {
+        if(props.editObj){
+            Object.keys(props.editObj).forEach((x) => {
+                setValue(`${x}`, `${props.editObj[x]}`)
+            })
+        }
+    }, [props])
 
     const onSubmit = (data) => {
         let formdata = new FormData()
@@ -30,6 +49,7 @@ const ProductForm = (props) => {
         formdata.append('discription', data.discription)
         formdata.append('colors', data.colors)
         formdata.append('productImage', data.productImage[0])
+        console.log(props.editObj)
         dispatch(setProduct(formdata))
         props.toggle()
     }
@@ -37,7 +57,7 @@ const ProductForm = (props) => {
         <div className='pForm'>
             <Form onSubmit={handleSubmit(onSubmit)}>
                 <Row className='gx-4 gy-3'>
-                    <Col xs={12}  md={6} lg={3}>
+                    <Col xs={12} md={6} lg={3}>
                         <FormGroup floating>
                             <input
                                 id="productName"
@@ -53,7 +73,7 @@ const ProductForm = (props) => {
                             {errors.productName && <span className='text-warning'>This field is required</span>}
                         </FormGroup>
                     </Col>
-                    <Col xs={12}  md={6} lg={3}>
+                    <Col xs={12} md={6} lg={3}>
                         <FormGroup floating>
                             <input
                                 id="price"
@@ -69,7 +89,7 @@ const ProductForm = (props) => {
                             {errors.price && <span className='text-warning'>This field is required</span>}
                         </FormGroup>
                     </Col>
-                    <Col xs={12}  md={6} lg={3}>
+                    <Col xs={12} md={6} lg={3}>
                         <FormGroup floating>
                             <input
                                 id="mobile"
@@ -85,7 +105,7 @@ const ProductForm = (props) => {
                             {errors.mobile && <span className='text-warning'>This field is required</span>}
                         </FormGroup>
                     </Col>
-                    <Col xs={12}  md={6} lg={3}>
+                    <Col xs={12} md={6} lg={3}>
                         <FormGroup floating>
                             <input
                                 id="category"
@@ -101,7 +121,7 @@ const ProductForm = (props) => {
                             {errors.category && <span className='text-warning'>This field is required</span>}
                         </FormGroup>
                     </Col>
-                    <Col xs={12}  md={6} lg={3}>
+                    <Col xs={12} md={6} lg={3}>
                         <FormGroup floating>
                             <input
                                 id="shopName"
@@ -118,7 +138,7 @@ const ProductForm = (props) => {
                         </FormGroup>
                     </Col>
 
-                    <Col xs={12}  md={6} lg={3}>
+                    <Col xs={12} md={6} lg={3}>
                         <FormGroup floating>
                             <input
                                 id="discount"
@@ -134,7 +154,7 @@ const ProductForm = (props) => {
                             {errors.discount && <span className='text-warning'>This field is required</span>}
                         </FormGroup>
                     </Col>
-                    <Col xs={12}  md={6} lg={3}>
+                    <Col xs={12} md={6} lg={3}>
                         <FormGroup floating>
                             <input
                                 id="discription"
@@ -150,7 +170,7 @@ const ProductForm = (props) => {
                             {errors.discription && <span className='text-warning'>This field is required</span>}
                         </FormGroup>
                     </Col>
-                    <Col xs={12}  md={6} lg={3}>
+                    <Col xs={12} md={6} lg={3}>
                         <FormGroup floating>
                             <input
                                 id="colors"
@@ -186,7 +206,6 @@ const ProductForm = (props) => {
                 <ModalFooter>
                     <input type="submit" className='form-control w-25 text-bg-secondary fw-bold fs-5' />
                 </ModalFooter>
-
             </Form>
         </div>
     )

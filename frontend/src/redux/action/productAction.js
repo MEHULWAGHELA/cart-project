@@ -40,6 +40,28 @@ export const setProduct = (obj) => {
             })
     }
 }
+export const updateProduct = (obj,id) => {
+    return (dispatch) => {
+        axios.post('http://localhost:7000/api/product/update?id='+id, obj, authorise())
+            .then((res) => {
+                Swal.fire({
+                    position: 'center-ceter',
+                    icon: 'success',
+                    title: 'Your Product updated Successfully',
+                    showConfirmButton: false,
+                    timer: 1500
+                })
+                dispatch(getProduct())
+            })
+            .catch((err) => {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: "Api Error",
+                })
+            })
+    }
+}
 export const deleteProduct = (id) => {
     return (dispatch) => {
         Swal.fire({

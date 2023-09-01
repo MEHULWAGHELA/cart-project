@@ -36,6 +36,7 @@ import { FcAbout } from 'react-icons/fc'
 import { TbDiscountCheckFilled } from 'react-icons/tb'
 import { AiFillPlusSquare, AiFillMinusSquare } from 'react-icons/ai'
 const Product = (props) => {
+  let [editObj, setEditObj] = useState()
   let state = useSelector((state) => state)
   let dispatch = useDispatch()
   let navigate = useNavigate()
@@ -49,6 +50,8 @@ const Product = (props) => {
   }, [])
 
   const editProductData = (id) => {
+    editObj = state.product.productData.filter((x) => x._id === id)[0]
+    setEditObj(editObj)
     toggle()
   }
   const deleteProductData = (id) => {
@@ -109,7 +112,7 @@ const Product = (props) => {
         >
           <ModalHeader toggle={toggle}>Product Info</ModalHeader>
           <ModalBody>
-            <ProductForm toggle={toggle} />
+            <ProductForm toggle={toggle}editObj={editObj}  />
           </ModalBody>
         </Modal>
       </div>
@@ -185,7 +188,7 @@ const Product = (props) => {
                             } />
                             <div className='text-white'>Total Price:-</div>
                           </FormGroup>
-                          
+
                           <Button className='buy_btn' onClick={() => { buyNow(x._id, i) }}>
                             Buy Now
                           </Button>
