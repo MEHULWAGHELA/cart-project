@@ -169,25 +169,25 @@ const Dashboard = () => {
     <Fragment>
       <Container fluid className='p-3'>
         <Row>
-          <Col xs={6}>
+          <Col xs={12} md={6}>
             <div className='dashboard_chartOne d-inline-block border border-2 border-black m-2 rounded-2'>
               <Label className='label-dashboar'>Sales Report Year</Label>
               <Line data={dataThree} option={optionsThree} />
             </div>
           </Col>
-          <Col xs={6}>
+          <Col xs={12} md={6}>
             <div className='dashboard_chartOne d-inline-block border border-2 border-black m-2 rounded-2'>
               <Label className='label-dashboar'>Expense Report Year 2023</Label>
               <Bar data={dataFour} options={optionsFour} />
             </div>
           </Col>
-          <Col xs={6}>
+          <Col xs={12} md={6}>
             <div className='dashboard_chartTwo d-inline-block border border-2 border-black m-2 rounded-2 p-2'>
               <Label className='label-dashboar'>Purchase Report Year 2023</Label>
               <PolarArea data={dataTwo} />
             </div>
           </Col>
-          <Col xs={6}>
+          <Col xs={12} md={6}>
             <div className='dashboard_chartOne d-inline-block border border-2 border-black m-2 rounded-2'>
               <Label className='label-dashboar'>Revenue Report Year 2023</Label>
               <Line data={data} option={options} />
