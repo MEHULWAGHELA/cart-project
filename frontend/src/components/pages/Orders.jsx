@@ -88,7 +88,6 @@ const Orders = () => {
                         </div>
                       </CardText>
                     </CardBody>
-                    <Button onClick={() => { setOrderCompleted(x._id) }}>Order Completed</Button>
                   </Card>
                 </Col>
               )
