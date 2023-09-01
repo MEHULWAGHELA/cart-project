@@ -52,7 +52,7 @@ const SignUp = () => {
       <div className='bg-sign-up'>
         <img src={require('../../assets/images/bg-4.jpg')} alt="" />
       </div>
-      <Container fluid className='py-5 userForm'>
+      <Container fluid className='py-5 userForm sign_up'>
         <Container>
           <div className='text-end'>
             <p className='text-white'>Already a user? <NavLink to="/" className='text-white text-decoration-none'>LOG IN</NavLink> </p>

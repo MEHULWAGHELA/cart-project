@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo } from 'react'
+import React, { useEffect, useMemo, useState } from 'react'
 import { Hoc } from '../hoc/Hoc'
 import '../../styles/pages/cart.scss'
 import { deleteCart, getCart } from '../../redux/action/cartAction'
@@ -15,6 +15,7 @@ import { ImMobile } from 'react-icons/im'
 import { FcAbout } from 'react-icons/fc'
 import { TbDiscountCheckFilled } from 'react-icons/tb'
 const Cart = () => {
+  let [dummy, setdummy] = useState()
   let state = useSelector((state) => state)
   let dispatch = useDispatch()
   let navigate = useNavigate()
@@ -44,6 +45,7 @@ const Cart = () => {
     else {
       document.querySelectorAll('.q_value')[index].value = 2;
     }
+    setdummy(dummy + 1)
   }
   const quantityDecrement = (index) => {
     if (document.querySelectorAll('.q_value')[index].value) {
@@ -55,11 +57,10 @@ const Cart = () => {
       document.querySelectorAll('.q_value')[index].value = 1;
     }
   }
-  const total = useMemo(() => {
-    return <div>Total Price:-</div>
-  }, [])
+
   return (
     <Container fluid>
+
       <Row className='g-4 product_card my-2'>
         {
           state.cart.cartData.map((x, i) => {
@@ -121,7 +122,8 @@ const Cart = () => {
                         <AiFillMinusSquare className='cart_quatity_icons' onClick={
                           () => quantityDecrement(i)
                         } />
-                        {total}
+                        {console.log(document.querySelectorAll('.q_value')[i]?.value)}
+                        <span>Total price:-{(document.querySelectorAll('.q_value')[i] ? document.querySelectorAll('.q_value')[i].value : 1) * x.price}</span>
                       </FormGroup>
                       <Button onClick={() => { buyNow(x._id, i) }}>
                         Buy Now

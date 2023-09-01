@@ -14,6 +14,18 @@
   height: 100%;
 }
 
-.logout{
-  background-color: #a90707;
+.logout {
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  font-weight: 700;
+  background-color:#d6b857 ; 
+}
+
+.logout:hover{
+  background-color: #ddac09 !important;
 }

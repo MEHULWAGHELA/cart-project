@@ -9,7 +9,6 @@ import { signin } from '../../redux/action/signInAction';
 import { DUMMY2 } from '../../redux/type/type';
 
 const SignIn = () => {
-
   let state = useSelector((state) => state)
   let dispatch = useDispatch()
   const { register, handleSubmit, formState: { errors } } = useForm();
@@ -26,7 +25,7 @@ const SignIn = () => {
       </div>
       <Container fluid className='py-5 userForm'>
         <Container>
-          <h1 className='text-center text-white mb-4'><FaUser /><span className='vertical-align-center'>Welcome to my website</span></h1>
+          <h1 className='text-center text-white mb-4'><FaUser /><span className='vertical-align-center'>Welcome to My Shop</span></h1>
           <Row>
             <Col xs={12} md={6}>
               <div className='w-100'>

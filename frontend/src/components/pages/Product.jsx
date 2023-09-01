@@ -88,9 +88,7 @@ const Product = (props) => {
       document.querySelectorAll('.q_value')[index].value = 1;
     }
   }
-  const total = useMemo(() => {
-    return <div>Total Price:-</div>
-  }, [])
+
   {/* quantity */ }
   return (
     <div>
@@ -177,7 +175,7 @@ const Product = (props) => {
                       <div className='d-flex justify-content-between quant_main'>
                         <div className='d-flex flex-column flex-wrap quant_sub'>
                           <FormGroup className='quant_div'>
-                            Quantity:-
+                            <span className='text-white'>Quantity:-</span>
                             <AiFillPlusSquare onClick={
                               () => quantityIncrement(i)
                             } className='cart_quatity_icons' />
@@ -185,8 +183,9 @@ const Product = (props) => {
                             <AiFillMinusSquare className='cart_quatity_icons' onClick={
                               () => quantityDecrement(i)
                             } />
-                            {total}
+                            <div className='text-white'>Total Price:-</div>
                           </FormGroup>
+                          
                           <Button className='buy_btn' onClick={() => { buyNow(x._id, i) }}>
                             Buy Now
                           </Button>

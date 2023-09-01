@@ -71,7 +71,7 @@ export const dataTwo = {
   datasets: [
     {
       label: '# of Votes',
-      data: [12, 19, 3, 20, 2, 9],
+      data: [12, 19, 15, 20, 16, 9],
       backgroundColor: [
         'rgba(192, 69, 57, 0.5)',
         'rgba(159, 105, 168, 0.5)',
@@ -107,7 +107,7 @@ export const dataThree = {
   datasets: [
     {
       fill: true,
-      label: 'Dataset 2',
+      label: 'Dataset',
       data: [12, 19, 3, 20, 2, 9],
       borderColor: 'rgb(53, 162, 235)',
       backgroundColor: 'rgba(53, 162, 235, 0.5)',
@@ -121,7 +121,6 @@ export const optionsFour = {
   plugins: {
     title: {
       display: true,
-      text: 'Chart.js Bar Chart - Stacked',
     },
   },
   responsive: true,
@@ -172,30 +171,31 @@ const Dashboard = () => {
         <Row>
           <Col xs={6}>
             <div className='dashboard_chartOne d-inline-block border border-2 border-black m-2 rounded-2'>
-              <Label>Sales Report Year</Label>
+              <Label className='label-dashboar'>Sales Report Year</Label>
               <Line data={dataThree} option={optionsThree} />
             </div>
           </Col>
           <Col xs={6}>
             <div className='dashboard_chartOne d-inline-block border border-2 border-black m-2 rounded-2'>
-              <Label>Sales Report Year</Label>
+              <Label className='label-dashboar'>Expense Report Year 2023</Label>
               <Bar data={dataFour} options={optionsFour} />
             </div>
           </Col>
           <Col xs={6}>
-            <div className='dashboard_chartTwo d-inline-block border border-2 border-black m-2 rounded-2'>
-              <Label>Customer</Label>
+            <div className='dashboard_chartTwo d-inline-block border border-2 border-black m-2 rounded-2 p-2'>
+              <Label className='label-dashboar'>Purchase Report Year 2023</Label>
               <PolarArea data={dataTwo} />
             </div>
           </Col>
           <Col xs={6}>
             <div className='dashboard_chartOne d-inline-block border border-2 border-black m-2 rounded-2'>
-              <Label>Sales Report Year</Label>
+              <Label className='label-dashboar'>Revenue Report Year 2023</Label>
               <Line data={data} option={options} />
             </div>
           </Col>
         </Row>
-        <Row className='g-0'>
+        <div><h1>Company Data (Year 2023)</h1></div>
+        <Row className='g-0 bottom_row'>
           <Col xs={6} md={3}>
             <div className='revenue'>Total Revenue</div>
             <div className='revenue_bottom'>20 Million Rupees</div>

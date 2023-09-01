@@ -19,3 +19,31 @@
     width: 100% !important;
   }
 }
+
+.bottom_row {
+  padding: 5px;
+  background-color: rgb(149, 149, 216);
+  margin: 0;
+}
+
+.revenue {
+  font-weight: 600;
+  border: 2px solid yellow;
+  padding: 10px;
+  color: white;
+  background-color: rgb(16, 16, 52);
+}
+
+.revenue_bottom {
+  font-weight: 600;
+  border: 2px solid yellow;
+  padding: 10px;
+  color: white;
+  background-color: rgb(77, 131, 252);
+}
+
+.label-dashboar {
+  color: rgb(98, 170, 170);
+  background-color: black;
+  padding: 10px;
+}

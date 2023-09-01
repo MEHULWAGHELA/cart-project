@@ -14,6 +14,7 @@
   position: fixed;
   top: 0;
   z-index: -1;
+  filter: blur(3px);
 }
 
 .bg-sign-up img {
@@ -22,21 +23,21 @@
   object-fit: cover;
 }
 
-input{
-  background-color: rgba(255, 255, 255, 0.521) !important;
+.sign_up input{
+  background-color: rgba(255, 255, 255, 0.7) !important;
 }
 
-label{
+.sign_up label{
   font-weight: 600;
   color:black;
 }
 
-select{
+.sign_up select{
   font-weight: 600 !important;
   color: black !important;
-  background-color: rgba(255, 255, 255, 0.507) !important;
+  background-color: rgba(255, 255, 255, 0.7) !important;
 }
-option{
+.sign_up option{
   font-weight: 600;
 }
 
