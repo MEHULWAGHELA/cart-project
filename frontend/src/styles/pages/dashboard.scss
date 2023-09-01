@@ -2,12 +2,20 @@
   &_chartOne {
     padding: 10px;
   }
+  &_chartOne {
+    height: auto !important;
+    width: 100% !important;
+  }
   &_chartOne canvas {
-    height: 200px !important;
-    width: 400px !important;
+    height: auto !important;
+    width: 100% !important;
+  }
+  &_chartTwo {
+    height: auto !important;
+    width: 100% !important;
   }
   &_chartTwo canvas {
-    height: 400px !important;
-    width: 400px !important;
+    height: auto !important;
+    width: 100% !important;
   }
 }

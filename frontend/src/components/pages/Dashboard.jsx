@@ -1,8 +1,8 @@
 import React, { Fragment } from 'react'
 import { Hoc } from '../hoc/Hoc'
 import '../../styles/pages/dashboard.scss'
-import { Doughnut, Line, PolarArea } from 'react-chartjs-2';
-import { Label } from 'reactstrap';
+import { Line, PolarArea, Bar } from 'react-chartjs-2';
+import { Col, Container, Label, Row } from 'reactstrap';
 import {
   Chart as ChartJS,
   RadialLinearScale,
@@ -10,6 +10,7 @@ import {
   CategoryScale,
   LinearScale,
   PointElement,
+  BarElement,
   LineElement,
   Title,
   Tooltip,
@@ -20,6 +21,7 @@ import {
 ChartJS.register(
   CategoryScale,
   LinearScale,
+  BarElement,
   PointElement,
   LineElement,
   RadialLinearScale,
@@ -113,25 +115,106 @@ export const dataThree = {
   ],
 };
 /* Chart Three Data */
+
+/* chart four data */
+export const optionsFour = {
+  plugins: {
+    title: {
+      display: true,
+      text: 'Chart.js Bar Chart - Stacked',
+    },
+  },
+  responsive: true,
+  interaction: {
+    mode: 'index',
+    intersect: false,
+  },
+  scales: {
+    x: {
+      stacked: true,
+    },
+    y: {
+      stacked: true,
+    },
+  },
+};
+
+const labelsFour = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
+
+const dataFour = {
+  labelsFour,
+  datasets: [
+    {
+      label: 'Dataset 1',
+      data: [10, 20, 40, 90, 60],
+      backgroundColor: 'rgb(255, 99, 132)',
+      stack: 'Stack 1',
+    },
+    {
+      label: 'Dataset 2',
+      data: [12, 19, 3, 20, 2, 9],
+      backgroundColor: 'rgb(75, 192, 192)',
+      stack: 'Stack 2',
+    },
+    {
+      label: 'Dataset 3',
+      data: [40, 20, 70, 30, 35, 47],
+      backgroundColor: 'rgb(53, 162, 235)',
+      stack: 'Stack 3',
+    },
+  ],
+}
+/* chart four data */
 const Dashboard = () => {
   return (
     <Fragment>
-      <div className='dashboard p-2'>
-        <div className='dashboard_chartTwo d-inline-block border border-2 border-black m-2 rounded-2'>
-          <Label>Customer</Label>
-          <PolarArea data={dataTwo} />
-        </div>
-        <div className='dashboard_chartOne d-inline-block border border-2 border-black m-2 rounded-2'>
-          <Label>Sales Report Year</Label>
-          <Line data={data} option={options} />
-        </div>
-        <div className='dashboard_chartOne d-inline-block border border-2 border-black m-2 rounded-2'>
-          <Label>Sales Report Year</Label>
-          <Line data={dataThree} option={optionsThree} />
-        </div>
-
-      </div>
-    </Fragment>
+      <Container fluid className='p-3'>
+        <Row>
+          <Col xs={6}>
+            <div className='dashboard_chartOne d-inline-block border border-2 border-black m-2 rounded-2'>
+              <Label>Sales Report Year</Label>
+              <Line data={dataThree} option={optionsThree} />
+            </div>
+          </Col>
+          <Col xs={6}>
+            <div className='dashboard_chartOne d-inline-block border border-2 border-black m-2 rounded-2'>
+              <Label>Sales Report Year</Label>
+              <Bar data={dataFour} options={optionsFour} />
+            </div>
+          </Col>
+          <Col xs={6}>
+            <div className='dashboard_chartTwo d-inline-block border border-2 border-black m-2 rounded-2'>
+              <Label>Customer</Label>
+              <PolarArea data={dataTwo} />
+            </div>
+          </Col>
+          <Col xs={6}>
+            <div className='dashboard_chartOne d-inline-block border border-2 border-black m-2 rounded-2'>
+              <Label>Sales Report Year</Label>
+              <Line data={data} option={options} />
+            </div>
+          </Col>
+        </Row>
+        <Row className='g-0'>
+          <Col xs={6} md={3}>
+            <div className='revenue'>Total Revenue</div>
+            <div className='revenue_bottom'>20 Million Rupees</div>
+          </Col>
+          <Col xs={6} md={3}>
+            <div className='revenue'>Total Expense</div>
+            <div className='revenue_bottom'>30 Million Rupees</div>
+          </Col>
+          <Col xs={6} md={3}>
+            <div className='revenue'>Total Sales</div>
+            <div className='revenue_bottom'>2 Million Products</div>
+          </Col>
+          <Col xs={6} md={3}>
+            <div className='revenue'>Total Purchase</div>
+            <div className='revenue_bottom'>1.8 Million Products</div>
+          </Col>
+        </Row>
+      </Container>
+    </Fragment >
   )
 }
 

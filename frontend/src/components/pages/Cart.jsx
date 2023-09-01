@@ -31,9 +31,9 @@ const Cart = () => {
     dispatch(setOrder(obj))
     dispatch(deleteCart(id))
   }
-  // const deleteCartData = (id) => {
-  //   dispatch(deleteCart(id))
-  // }
+  const deleteCartData = (id) => {
+    dispatch(deleteCart(id))
+  }
 
   const quantityIncrement = (index) => {
     if (document.querySelectorAll('.q_value')[index].value) {
@@ -70,6 +70,12 @@ const Cart = () => {
                     alt="Sample"
                     src={x.productImage}
                   />
+                  <div className='product_card_three_dot'>
+                    <PiDotsThreeOutlineVerticalBold />
+                    <div className='product_card_three_dot_hover'>
+                      <button onClick={() => deleteCartData(x._id)}>Delete</button>
+                    </div>
+                  </div>
                   <CardBody>
                     <CardTitle tag="h5">
                       Product:-{x.productName}

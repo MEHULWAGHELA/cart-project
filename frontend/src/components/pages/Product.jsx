@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect, useState } from 'react'
+import React, { Fragment, useEffect, useMemo, useState } from 'react'
 import { NavLink, useNavigate } from 'react-router-dom';
 import { Hoc } from '../hoc/Hoc'
 import '../../styles/pages/product.scss'
@@ -18,7 +18,8 @@ import {
   Card,
   Row,
   Col,
-  Container
+  Container,
+  FormGroup
 } from 'reactstrap';
 import PropTypes from 'prop-types';
 import ProductForm from '../other/ProductForm';
@@ -33,6 +34,7 @@ import { FaRupeeSign } from 'react-icons/fa'
 import { ImMobile } from 'react-icons/im'
 import { FcAbout } from 'react-icons/fc'
 import { TbDiscountCheckFilled } from 'react-icons/tb'
+import { AiFillPlusSquare, AiFillMinusSquare } from 'react-icons/ai'
 const Product = (props) => {
   let state = useSelector((state) => state)
   let dispatch = useDispatch()
@@ -53,10 +55,10 @@ const Product = (props) => {
     dispatch(deleteProduct(id))
   }
 
-  const buyNow = (id) => {
+  const buyNow = (id, index) => {
     let obj = {
       productId: id,
-      quantity: 3
+      quantity: document.querySelectorAll('.q_value')[index].value || 1
     }
     dispatch(setOrder(obj))
   }
@@ -65,6 +67,31 @@ const Product = (props) => {
     dispatch(setCart(id))
   }
 
+  {/* quantity */ }
+  const quantityIncrement = (index) => {
+    if (document.querySelectorAll('.q_value')[index].value) {
+      if ((document.querySelectorAll('.q_value')[index].value) > 0 && (document.querySelectorAll('.q_value')[index].value) < 10) {
+        document.querySelectorAll('.q_value')[index].value = Number(document.querySelectorAll('.q_value')[index].value) + 1;
+      }
+    }
+    else {
+      document.querySelectorAll('.q_value')[index].value = 2;
+    }
+  }
+  const quantityDecrement = (index) => {
+    if (document.querySelectorAll('.q_value')[index].value) {
+      if ((document.querySelectorAll('.q_value')[index].value) > 1) {
+        document.querySelectorAll('.q_value')[index].value = Number(document.querySelectorAll('.q_value')[index].value) - 1;
+      }
+    }
+    else {
+      document.querySelectorAll('.q_value')[index].value = 1;
+    }
+  }
+  const total = useMemo(() => {
+    return <div>Total Price:-</div>
+  }, [])
+  {/* quantity */ }
   return (
     <div>
       {/* Modal  */}
@@ -91,6 +118,7 @@ const Product = (props) => {
 
       {/* Modal  */}
 
+
       {/* CARD */}
 
       <Container fluid>
@@ -98,7 +126,7 @@ const Product = (props) => {
           {
             state.product.productData.map((x, i) => {
               return (
-                <Col xs={12} md={6} lg={4} key={i}>
+                <Col xs={12} sm={6} lg={4} key={i}>
                   <Card className='position-relative' style={{ backgroundColor: x.color }}>
                     <img
                       alt="Sample"
@@ -106,10 +134,10 @@ const Product = (props) => {
                     />
                     <div className='product_card_three_dot'>
                       <PiDotsThreeOutlineVerticalBold />
-                      <dir className='product_card_three_dot_hover'>
+                      <div className='product_card_three_dot_hover'>
                         <button onClick={() => editProductData(x._id)}>Edit</button>
                         <button onClick={() => deleteProductData(x._id)}>Delete</button>
-                      </dir>
+                      </div>
                     </div>
                     <CardBody>
                       <CardTitle tag="h5">
@@ -146,10 +174,23 @@ const Product = (props) => {
                           Discount:-{x.discount}
                         </div>
                       </CardText>
-                      <div className='d-flex justify-content-between'>
-                        <Button onClick={() => buyNow(x._id)}>
-                          Buy Now
-                        </Button>
+                      <div className='d-flex justify-content-between quant_main'>
+                        <div className='d-flex flex-column flex-wrap quant_sub'>
+                          <FormGroup className='quant_div'>
+                            Quantity:-
+                            <AiFillPlusSquare onClick={
+                              () => quantityIncrement(i)
+                            } className='cart_quatity_icons' />
+                            <input type="number" className='cart_quantity_input q_value' placeholder='1' />
+                            <AiFillMinusSquare className='cart_quatity_icons' onClick={
+                              () => quantityDecrement(i)
+                            } />
+                            {total}
+                          </FormGroup>
+                          <Button className='buy_btn' onClick={() => { buyNow(x._id, i) }}>
+                            Buy Now
+                          </Button>
+                        </div>
                         <Button onClick={() => addToCart(x._id)}>
                           Add To Cart
                         </Button>
