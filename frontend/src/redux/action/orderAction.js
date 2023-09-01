@@ -10,7 +10,11 @@ export const getOrder = () => {
                 dispatch({ type: GETORDER, data: [...res.data.data] })
             })
             .catch((err) => {
-                console.log(err)
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: "Api Error",
+                })
             })
     }
 }
@@ -28,7 +32,11 @@ export const setOrder = (obj) => {
                 dispatch(getOrder())
             })
             .catch((err) => {
-                console.log(err)
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: "Api Error",
+                })
             })
     }
 }
@@ -53,7 +61,11 @@ export const deleteOrder = (id) => {
                         )
                         dispatch(getOrder())
                     }).catch((err) => {
-                        console.log(err)
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Oops...',
+                            text: "Api Error",
+                        })
                     })
 
             }

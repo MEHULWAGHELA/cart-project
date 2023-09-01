@@ -26,7 +26,6 @@ const SignIn = () => {
       </div>
       <Container fluid className='py-5 userForm'>
         <Container>
-          {console.log(state)}
           <h1 className='text-center text-white mb-4'><FaUser /><span className='vertical-align-center'>Welcome to my website</span></h1>
           <Row>
             <Col xs={12} md={6}>

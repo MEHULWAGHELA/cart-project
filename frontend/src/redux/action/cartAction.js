@@ -10,7 +10,11 @@ export const getCart = () => {
                 dispatch({ type: GETCART, data: [...res.data.data] })
             })
             .catch((err) => {
-                console.log(err)
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: "Api Error",
+                })
             })
     }
 }
@@ -28,17 +32,43 @@ export const setCart = (id) => {
                 dispatch(getCart())
             })
             .catch((err) => {
-                console.log(err)
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: "Api Error",
+                })
             })
     }
 }
 export const deleteCart = (id) => {
     return (dispatch) => {
-        axios.delete('http://localhost:7000/api/addtocart/remove?productId=' + id, authorise())
-            .then((res) => {
-                dispatch(getCart())
-            }).catch((err) => {
-                console.log(err)
-            })
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                axios.delete('http://localhost:7000/api/addtocart/remove?productId=' + id, authorise())
+                    .then((res) => {
+                        Swal.fire(
+                            'Deleted!',
+                            'Your file has been deleted.',
+                            'success'
+                        )
+                        dispatch(getCart())
+                    }).catch((err) => {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Oops...',
+                            text: "Api Error",
+                        })
+                    })
+
+            }
+        })
     }
 }

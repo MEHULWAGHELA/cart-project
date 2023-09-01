@@ -1,6 +1,7 @@
 import axios from "axios"
 import { authorise } from "../../components/authorize/authorise"
 import { GETORDERCOMPLETED } from "../type/type"
+import Swal from "sweetalert2"
 
 export const getOrderCompleted = () => {
     return (dispatch) => {
@@ -9,7 +10,11 @@ export const getOrderCompleted = () => {
                 dispatch({ type: GETORDERCOMPLETED, data: [...res.data.data] })
             })
             .catch((err) => {
-                console.log(err)
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: "Api Error",
+                })
             })
     }
 }

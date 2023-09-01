@@ -14,17 +14,14 @@ import { BsGenderMale } from 'react-icons/bs'
 const Profile = () => {
     let state = useSelector((state) => state)
     let dispatch = useDispatch()
-    useEffect(() => {
-        console.log(state.profile.profileData)
-
-    }, [state])
+    
     useEffect(() => {
         dispatch(getProfile())
     }, [])
 
     return (
         <>
-            <div>
+            <div className='bg-primary-subtle pb-3'>
                 <Container>
                     <Row>
                         {state.profile.profileData.map((x, i) => {

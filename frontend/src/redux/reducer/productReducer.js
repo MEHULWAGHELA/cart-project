@@ -3,7 +3,6 @@ let defaultState = {
     productData: []
 }
 export const productReducer = (state = defaultState, action) => {
-    console.log(action)
     switch (action.type) {
         case GETPRODUCT: {
             return {

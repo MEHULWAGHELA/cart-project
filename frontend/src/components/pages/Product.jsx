@@ -94,7 +94,7 @@ const Product = (props) => {
       {/* CARD */}
 
       <Container fluid>
-        <Row className='g-4 product_card'>
+        <Row className='g-4 product_card my-2'>
           {
             state.product.productData.map((x, i) => {
               return (

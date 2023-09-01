@@ -22,9 +22,6 @@ const Cart = () => {
   useEffect(() => {
     dispatch(getCart())
   }, [])
-  useEffect(() => {
-    console.log(state)
-  }, [state])
 
   const buyNow = (id, index) => {
     let obj = {
@@ -49,7 +46,6 @@ const Cart = () => {
     }
   }
   const quantityDecrement = (index) => {
-    console.log()
     if (document.querySelectorAll('.q_value')[index].value) {
       if ((document.querySelectorAll('.q_value')[index].value) > 1) {
         document.querySelectorAll('.q_value')[index].value = Number(document.querySelectorAll('.q_value')[index].value) - 1;
@@ -64,11 +60,11 @@ const Cart = () => {
   }, [])
   return (
     <Container fluid>
-      <Row className='g-4 product_card'>
+      <Row className='g-4 product_card my-2'>
         {
           state.cart.cartData.map((x, i) => {
             return (
-              <Col xs={12} md={6} lg={4} key={i}>
+              <Col xs={12} md={6} lg={4} key={i} >
                 <Card className='position-relative' style={{ backgroundColor: x.color }}>
                   <img
                     alt="Sample"

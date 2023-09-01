@@ -17,9 +17,7 @@ import { MdProductionQuantityLimits } from 'react-icons/md'
 const Orders = () => {
   let state = useSelector((state) => state)
   let dispatch = useDispatch()
-  useEffect(() => {
-    console.log(state.order.orderData)
-  }, [state])
+  
   useEffect(() => {
     dispatch(getOrder())
   }, [])
@@ -34,12 +32,11 @@ const Orders = () => {
   return (
     <div>
       <Container fluid>
-        <Row className='g-4 product_card'>
+        <Row className='g-4 product_card my-2'>
           {
             state.order.orderData.map((x, i) => {
               return (
-                <Col xs={12} md={6} lg={4} key={i}>
-                  {console.log(x)}
+                <Col xs={12} md={6} lg={4} key={i} >
                   <Card className='position-relative' style={{ backgroundColor: x.color }}>
                     <img
                       alt="Sample"

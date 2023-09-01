@@ -10,7 +10,11 @@ export const getProduct = () => {
                 dispatch({ type: GETPRODUCT, data: [...res.data.data] })
             })
             .catch((err) => {
-                console.log(err)
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: "Api Error",
+                })
             })
     }
 }
@@ -28,19 +32,16 @@ export const setProduct = (obj) => {
                 dispatch(getProduct())
             })
             .catch((err) => {
-                console.log(err)
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: "Api Error",
+                })
             })
     }
 }
 export const deleteProduct = (id) => {
     return (dispatch) => {
-        axios.delete('http://localhost:7000/api/product/delete?id=' + id, authorise())
-            .then((res) => {
-
-                dispatch(getProduct())
-            }).catch((err) => {
-                console.log(err)
-            })
         Swal.fire({
             title: 'Are you sure?',
             text: "You won't be able to revert this!",
@@ -60,7 +61,11 @@ export const deleteProduct = (id) => {
                         )
                         dispatch(getProduct())
                     }).catch((err) => {
-                        console.log(err)
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Oops...',
+                            text: "Api Error",
+                        })
                     })
             }
         })

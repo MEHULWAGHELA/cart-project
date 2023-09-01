@@ -2,6 +2,7 @@ import React, { Fragment } from 'react'
 import { Hoc } from '../hoc/Hoc'
 import '../../styles/pages/dashboard.scss'
 import { Doughnut, Line, PolarArea } from 'react-chartjs-2';
+import { Label } from 'reactstrap';
 import {
   Chart as ChartJS,
   RadialLinearScale,
@@ -13,8 +14,8 @@ import {
   Title,
   Tooltip,
   Legend,
+  Filler,
 } from 'chart.js';
-import { Label } from 'reactstrap';
 
 ChartJS.register(
   CategoryScale,
@@ -24,6 +25,7 @@ ChartJS.register(
   RadialLinearScale,
   ArcElement,
   Title,
+  Filler,
   Tooltip,
   Legend
 );
@@ -40,6 +42,8 @@ export const options = {
     },
   },
 };
+
+
 const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
 
 export const data = {
@@ -78,6 +82,37 @@ export const dataTwo = {
     },
   ],
 };
+
+
+/* Chart Three Data */
+export const optionsThree = {
+  responsive: true,
+  plugins: {
+    legend: {
+      position: 'top',
+    },
+    title: {
+      display: true,
+      text: 'Chart.js Line Chart',
+    },
+  },
+};
+
+const labelsThree = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
+
+export const dataThree = {
+  labelsThree,
+  datasets: [
+    {
+      fill: true,
+      label: 'Dataset 2',
+      data: [12, 19, 3, 20, 2, 9],
+      borderColor: 'rgb(53, 162, 235)',
+      backgroundColor: 'rgba(53, 162, 235, 0.5)',
+    },
+  ],
+};
+/* Chart Three Data */
 const Dashboard = () => {
   return (
     <Fragment>
@@ -90,7 +125,11 @@ const Dashboard = () => {
           <Label>Sales Report Year</Label>
           <Line data={data} option={options} />
         </div>
-        
+        <div className='dashboard_chartOne d-inline-block border border-2 border-black m-2 rounded-2'>
+          <Label>Sales Report Year</Label>
+          <Line data={dataThree} option={optionsThree} />
+        </div>
+
       </div>
     </Fragment>
   )
